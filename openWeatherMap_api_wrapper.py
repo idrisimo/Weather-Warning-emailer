@@ -11,7 +11,7 @@ def get_fiveday_forcast(city_name, api_key):
     weather_id_list = [
         [201, 202, 231, 232],
         [301, 302, 311, 312, 313, 314, 321],
-        [501, 502, 503, 504, 511, 521, 522, 531],
+        [500, 501, 502, 503, 504, 511, 521, 522, 531],
         [601, 602, 611, 613, 616, 621, 622]
     ]
     weather_dict = {}
@@ -35,7 +35,10 @@ def get_fiveday_forcast(city_name, api_key):
                         weather_dict.setdefault(weather_datetime[0], {'Time of Day': weather_datetime[1],
                                                  'Weather Type': weather_type})
     except Exception:
-        time_stamp = time.asctime(time.localtime(time.time()))
-        logging.basicConfig(filename='weather app.log', filemode='w')
-        logging.exception(f'[{time_stamp}]: An error has occurred\n-------------------------')
+        logging.basicConfig(filename='weather app.log',
+                            filemode='a',
+                            format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                            datefmt='%d-%m-%Y %H:%M:%S',
+                            level=logging.DEBUG)
+        logging.exception(f'An error has occurred\n---------------------------------------------------')
     return weather_dict
