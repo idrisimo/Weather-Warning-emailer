@@ -30,7 +30,7 @@ def run():
     Do we need to rebook the groundsmen jobs?:\n
     {newline.join(f'{key}: {value}' for key, value in forcast_data.items())}\n
     Weatherman"""
-
+    print(f'[{time_stamp}]: Script successfully started!')
     logging.info(f'Script successfully started!')
 
     '''schedule.every().monday.at('05:00').do(send_email, sender_email, receiver_email, email_password, message)
