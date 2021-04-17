@@ -1,1 +1,1 @@
-web: python mail_man.py
+worker: python mail_man.py
