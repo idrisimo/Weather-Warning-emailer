@@ -1,0 +1,1 @@
+web: python mail_man.py

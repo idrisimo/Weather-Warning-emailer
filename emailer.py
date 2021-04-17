@@ -15,7 +15,6 @@ def send_email(sender_email, receiver_email, email_password, subject, message_bo
         message_template['From'] = sender_email
         message_template['To'] = receiver_email
         text = message_body
-        print(text)
         message_part = MIMEText(text, 'plain')
         message_template.attach(message_part)
         time_stamp = time.asctime(time.localtime(time.time()))
