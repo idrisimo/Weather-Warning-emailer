@@ -26,14 +26,17 @@ def get_fiveday_forcast(city_name, api_key):
             weather_id = int(weather_items['weather'][0]['id'])
             weather_type = weather_items['weather'][0]['description']
             weather_datetime = str(datetime.strptime(weather_items['dt_txt'],
-                                                     '%Y-%m-%d %H:%M:%S')).split(' ')
-            weather_dow = datetime.strptime(weather_datetime[0], '%Y-%m-%d')
+                                                     '%Y-%m-%d %H:%M:%S').strftime('%d-%m-%Y %H:%M:%S')).split(' ')
+            weather_dow = datetime.strptime(weather_datetime[0], '%d-%m-%Y')
+
             weather_dow = weather_dow.strftime('%A')
+
             for weather_id_range in weather_id_list:
                 if weather_id in weather_id_range:
-                    if weather_dow != ['Saturday', 'Sunday']:
+                    if weather_dow not in ['Saturday', 'Sunday']:
                         weather_dict.setdefault(weather_datetime[0], {'Time of Day': weather_datetime[1],
-                                                 'Weather Type': weather_type})
+                                                 'Weather Type': weather_type, 'Weather ID': weather_id})
+        print(weather_dict)
     except Exception:
         logging.basicConfig(filename='weather app.log',
                             filemode='a',
@@ -42,3 +45,6 @@ def get_fiveday_forcast(city_name, api_key):
                             level=logging.DEBUG)
         logging.exception(f'An error has occurred\n---------------------------------------------------')
     return weather_dict
+
+
+print(get_fiveday_forcast('Barnet', '66b1953630cfd958530cb52d34c154c0'))

@@ -33,9 +33,12 @@ def run():
     print(f'[{time_stamp}]: Script successfully started!')
     logging.info(f'Script successfully started!')
 
-    schedule.every().monday.at('05:00').do(send_email, sender_email, receiver_email, email_password, subject, message)
-    schedule.every().wednesday.at('05:00').do(send_email, sender_email, receiver_email, email_password, subject, message)
-    schedule.every().friday.at('05:00').do(send_email, sender_email, receiver_email, email_password, subject, message)
+    schedule.every().monday.at('06:00').do(send_email, sender_email, receiver_email, email_password, subject, message)
+    schedule.every().tuesday.at('06:00').do(send_email, sender_email, receiver_email, email_password, subject, message)
+    schedule.every().wednesday.at('06:00').do(send_email, sender_email, receiver_email, email_password, subject, message)
+    schedule.every().thursday.at('06:00').do(send_email, sender_email, receiver_email, email_password, subject, message)
+    schedule.every().friday.at('06:00').do(send_email, sender_email, receiver_email, email_password, subject, message)
+    schedule.every().sunday.at('06:00').do(send_email, sender_email, receiver_email, email_password, subject, message)
 
     '''schedule.every(1).minute.do(send_email, sender_email, receiver_email, email_password, subject, message)'''
     try:
