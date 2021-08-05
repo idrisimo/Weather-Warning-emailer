@@ -11,7 +11,7 @@ def get_fiveday_forcast(city_name, api_key):
     weather_id_list = [
         [201, 202, 231, 232],
         [301, 302, 311, 312, 313, 314, 321],
-        [501, 502, 503, 504, 511, 521, 522, 531],
+        [500, 501, 502, 503, 504, 511, 521, 522, 531],
         [601, 602, 611, 613, 616, 621, 622]
     ]
     weather_dict = {}
@@ -36,7 +36,7 @@ def get_fiveday_forcast(city_name, api_key):
                     if weather_dow not in ['Saturday', 'Sunday']:
                         weather_dict.setdefault(weather_datetime[0], {'Time of Day': weather_datetime[1],
                                                  'Weather Type': weather_type, 'Weather ID': weather_id})
-        print(weather_dict)
+
     except Exception:
         logging.basicConfig(filename='weather app.log',
                             filemode='a',
@@ -47,4 +47,4 @@ def get_fiveday_forcast(city_name, api_key):
     return weather_dict
 
 
-print(get_fiveday_forcast('Barnet', '66b1953630cfd958530cb52d34c154c0'))
+#print(get_fiveday_forcast('Barnet', '66b1953630cfd958530cb52d34c154c0'))

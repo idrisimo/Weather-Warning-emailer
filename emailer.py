@@ -25,7 +25,7 @@ def send_email(sender_email, receiver_email, email_password, subject, message_bo
             server.sendmail(sender_email, receiver_email, message_template.as_string())
         logging.info('Email successfully sent!')
         return print(f'[{time_stamp}]: Email sent.')
-    except:
+    except Exception as e:
 
-        logging.error('There was an error sending an email.')
+        logging.error(f'There was an error sending an email: {e}')
         return print('error with sending email')
